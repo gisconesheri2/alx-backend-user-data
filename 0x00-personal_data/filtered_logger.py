@@ -48,8 +48,10 @@ class RedactingFormatter(logging.Formatter):
         return super().format(record)
 
 
-def get_logger():
-    """Set up handlers and formatters for the logger"""
+def get_logger() -> logging.Logger:
+    """
+    Set up handlers and formatters for the logger
+    """
     user_data = logging.getLogger('user_data')
     user_data.setLevel(logging.INFO)
 
@@ -61,7 +63,7 @@ def get_logger():
     return user_data
 
 
-def get_db():
+def get_db() -> mysql.connector.connection_cext.CMySQLConnection:
     """Setup a database connector for a MYSQL database"""
     username = os.getenv('PERSONAL_DATA_DB_USERNAME')
     pwd = os.getenv('PERSONAL_DATA_DB_PASSWORD')
