@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""obfuscate a log message"""
+"""obfuscate a log message so as to
+remove personal information form log messages"""
 import logging
 import re
 from typing import List
@@ -51,6 +52,8 @@ class RedactingFormatter(logging.Formatter):
 def get_logger() -> logging.Logger:
     """
     Set up handlers and formatters for the logger
+    Return:
+        a logger with a custom formatter
     """
     user_data = logging.getLogger('user_data')
     user_data.setLevel(logging.INFO)
@@ -64,7 +67,10 @@ def get_logger() -> logging.Logger:
 
 
 def get_db() -> mysql.connector.connection_cext.CMySQLConnection:
-    """Setup a database connector for a MYSQL database"""
+    """
+    Setup a database connector for a MYSQL database
+    use environmental variables to sensitive info
+    """
     username = os.getenv('PERSONAL_DATA_DB_USERNAME')
     pwd = os.getenv('PERSONAL_DATA_DB_PASSWORD')
     host = os.getenv('PERSONAL_DATA_DB_HOST')
