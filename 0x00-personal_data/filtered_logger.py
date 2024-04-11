@@ -63,6 +63,7 @@ def get_logger() -> logging.Logger:
 
     sh.setFormatter(formatter)
     user_data.addHandler(sh)
+    user_data.propagate = False
     return user_data
 
 
@@ -92,7 +93,7 @@ def main():
 
     cursor = my_db.cursor()
     cursor.execute("SELECT * FROM users;")
-    for row in cursor:
+    for row in cursor.fetchall():
         row_head = ['name', 'email', 'phone', 'ssn', 'password', 'ip',
                     'last_login', 'user_agent']
         row_elems = ([str(entry) for entry in row])
