@@ -98,3 +98,7 @@ def main():
         row_elems = ([str(entry) for entry in row])
         rhe = list(zip(row_head, row_elems))
         logger.info('; '.join(['='.join(elem) for elem in rhe]))
+
+
+if __name__ == '__main__':
+    main()
