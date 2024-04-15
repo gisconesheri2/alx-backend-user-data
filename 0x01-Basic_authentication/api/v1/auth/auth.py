@@ -22,8 +22,15 @@ class Auth():
             return True
         if path[-1] != '/':
             path = path + '/'
-        if path in excluded_paths:
-            return False
+        for p in excluded_paths:
+            if '*' in p:
+                common_root = p.split('*')[0]
+                end = len(common_root)
+                if path[:end] == common_root:
+                    return False
+            else:
+                if path == p:
+                    return False
         else:
             return True
 

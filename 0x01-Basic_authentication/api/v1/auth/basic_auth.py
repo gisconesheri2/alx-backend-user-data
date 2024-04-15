@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Authentication module to handle basic authentication"""
+import re
 from api.v1.auth.auth import Auth
 from models.user import User
 import base64
@@ -52,8 +53,9 @@ class BasicAuth(Auth):
             return (None, None)
         if ':' not in auth_header_str:
             return (None, None)
-        user_pass = auth_header_str.split(':')
-        return (user_pass[0], user_pass[1])
+        match = re.search(r'([\w@.]+):(.*)', auth_header_str).groups()
+        if match:
+            return match
 
     def user_object_from_credentials(self, user_email: str,
                                      user_pwd: str) -> TypeVar('User'):
