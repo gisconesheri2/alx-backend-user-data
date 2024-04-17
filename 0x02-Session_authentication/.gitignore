@@ -1,0 +1,8 @@
+__pycache__/
+bin/
+include/
+lib/
+share/
+pyvenv.cfg
+main.py
+.db_User.json
