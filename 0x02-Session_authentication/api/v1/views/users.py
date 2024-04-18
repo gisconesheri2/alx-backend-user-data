@@ -30,7 +30,6 @@ def view_one_user(user_id: str = None) -> str:
     if user_id == 'me' and cur_user is None:
         abort(404)
     if user_id == 'me' and cur_user is not None:
-        print(cur_user)
         return jsonify(cur_user.to_json())
 
     if user_id is None:
