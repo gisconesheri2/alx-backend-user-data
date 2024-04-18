@@ -51,9 +51,9 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
     Setup a database connector for a MYSQL database
     use environmental variables to sensitive info
     """
-    username = os.getenv('PERSONAL_DATA_DB_USERNAME')
-    pwd = os.getenv('PERSONAL_DATA_DB_PASSWORD')
-    host = os.getenv('PERSONAL_DATA_DB_HOST')
+    username = os.getenv('PERSONAL_DATA_DB_USERNAME', 'root')
+    pwd = os.getenv('PERSONAL_DATA_DB_PASSWORD', '')
+    host = os.getenv('PERSONAL_DATA_DB_HOST', 'localhost')
     db = os.getenv('PERSONAL_DATA_DB_NAME')
     try:
         cnx = mysql.connector.connect(user=username, password=pwd,
