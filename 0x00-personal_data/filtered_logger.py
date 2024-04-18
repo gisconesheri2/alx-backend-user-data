@@ -46,7 +46,7 @@ def get_logger() -> logging.Logger:
     return user_data
 
 
-def get_db() -> mysql.connector.connection_cext.CMySQLConnection:
+def get_db() -> mysql.connector.connection.MySQLConnection:
     """
     Setup a database connector for a MYSQL database
     use environmental variables to sensitive info
