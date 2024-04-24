@@ -14,9 +14,11 @@ def _hash_password(password: str) -> bytes:
     hashed = bcrypt.hashpw(pss_bytes, bcrypt.gensalt())
     return hashed
 
+
 def _generate_uuid(self) -> str:
-        """generate a uuid"""
-        return str(uuid4())
+    """generate a uuid"""
+    return str(uuid4())
+
 
 class Auth:
     """Auth class to interact with the authentication database.
@@ -46,7 +48,6 @@ class Auth:
                 return False
         except NoResultFound:
             return False
-
 
     def create_session(self, email) -> str:
         """create and store a session id"""
