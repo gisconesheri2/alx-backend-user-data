@@ -4,7 +4,6 @@ include/
 lib/
 share/
 pyvenv.cfg
-main.py
 .db_User*
 a.db
 .venv
